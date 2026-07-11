@@ -8,12 +8,13 @@ type Meal = {
   rating: number;
   reviews: number;
   price: number;
+  category?: string;
 };
 
 export default function MealCard({ meal }: { meal: Meal }) {
   return (
     <div className="overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-2 hover:shadow-xl">
-      <div className="relative h-56 w-full">
+      <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={meal.image}
           alt={meal.name}

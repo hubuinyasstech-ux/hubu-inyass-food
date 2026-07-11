@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import { useCart } from "@/context/CartContext";
@@ -19,21 +20,39 @@ type Props = {
 
 export default function MealCard({ meal }: Props) {
   const { addToCart } = useCart();
+  const [favorite, setFavorite] = useState(false);
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: meal.id,
+      name: meal.name,
+      image: meal.image,
+      price: meal.price,
+    });
+
+    alert(`${meal.name} added to cart!`);
+  };
 
   return (
-    <div className="overflow-hidden rounded-2xl bg-white shadow-lg transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
+    <div className="overflow-hidden rounded-2xl bg-white shadow-lg transition hover:-translate-y-2 hover:shadow-2xl">
       {/* Image */}
       <div className="relative h-56 w-full">
         <Image
           src={meal.image}
           alt={meal.name}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width:768px) 100vw, 50vw"
           className="object-cover"
         />
 
-        <button className="absolute right-4 top-4 rounded-full bg-white p-2 shadow-md">
-          <Heart size={18} />
+        <button
+          onClick={() => setFavorite(!favorite)}
+          className="absolute right-4 top-4 rounded-full bg-white p-2 shadow-md"
+        >
+          <Heart
+            size={18}
+            className={favorite ? "fill-red-500 text-red-500" : "text-gray-600"}
+          />
         </button>
       </div>
 
@@ -46,7 +65,7 @@ export default function MealCard({ meal }: Props) {
         <h3 className="mt-3 text-xl font-bold">{meal.name}</h3>
 
         <div className="mt-2 flex items-center gap-2">
-          <Star className="fill-yellow-400 text-yellow-400" size={18} />
+          <Star size={18} className="fill-yellow-400 text-yellow-400" />
           <span>{meal.rating}</span>
         </div>
 
@@ -57,16 +76,15 @@ export default function MealCard({ meal }: Props) {
 
           <button
             onClick={() => {
+              alert("Button clicked!");
               addToCart({
                 id: meal.id,
                 name: meal.name,
                 image: meal.image,
                 price: meal.price,
               });
-
-              alert(`${meal.name} added to cart!`);
             }}
-            className="flex items-center gap-2 rounded-xl bg-orange-500 px-4 py-2 text-white transition hover:bg-orange-600"
+            className="flex items-center gap-2 rounded-xl bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
           >
             <ShoppingCart size={18} />
             Add
