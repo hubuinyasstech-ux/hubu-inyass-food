@@ -31,4 +31,33 @@ export const meals = [
     reviews: 140,
     price: 3800,
   },
+
+  {
+    id: 1,
+    name: "Cheese Burger",
+    image: "/images/foods/burger.avif",
+    price: 4500,
+    category: "Burger",
+  },
+  {
+    id: 2,
+    name: "Pepperoni Pizza",
+    image: "/images/foods/pizza.avif",
+    price: 6500,
+    category: "Pizza",
+  },
+  {
+    id: 3,
+    name: "Fried Chicken",
+    image: "/images/foods/chicken.avif",
+    price: 5200,
+    category: "Chicken",
+  },
+  {
+    id: 4,
+    name: "Jollof Rice",
+    image: "/images/foods/jollof.avif",
+    price: 3500,
+    category: "Local",
+  },
 ];
