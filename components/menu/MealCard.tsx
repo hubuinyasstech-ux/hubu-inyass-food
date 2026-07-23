@@ -5,15 +5,7 @@ import Image from "next/image";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
-type Meal = {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  rating: number;
-  reviews?: number;
-  category?: string;
-};
+import type { Meal } from "@/types/meal";
 
 type Props = {
   meal: Meal;

@@ -1,15 +1,7 @@
 import Image from "next/image";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 
-type Meal = {
-  id: number;
-  name: string;
-  image: string;
-  rating: number;
-  reviews: number;
-  price: number;
-  category?: string;
-};
+import type { Meal } from "@/types/meal";
 
 export default function MealCard({ meal }: { meal: Meal }) {
   return (
