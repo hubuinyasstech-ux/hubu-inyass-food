@@ -11,7 +11,8 @@ type Meal = {
   image: string;
   price: number;
   rating: number;
-  category: string;
+  reviews?: number;
+  category?: string;
 };
 
 type Props = {
@@ -75,15 +76,7 @@ export default function MealCard({ meal }: Props) {
           </span>
 
           <button
-            onClick={() => {
-              alert("Button clicked!");
-              addToCart({
-                id: meal.id,
-                name: meal.name,
-                image: meal.image,
-                price: meal.price,
-              });
-            }}
+            onClick={handleAddToCart}
             className="flex items-center gap-2 rounded-xl bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
           >
             <ShoppingCart size={18} />
